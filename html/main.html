@@ -45,6 +45,15 @@
             font-size: 1rem;
             color: red;
         }
+        @media (max-width:600px)
+        {
+            .child{
+                font-size: 1.1rem;
+            }
+            .unavailable{
+                font-size: 0.5rem;
+            }
+        }
     </style>
 </head>
 <body>
@@ -58,7 +67,7 @@
             <input type="radio" name="payment" id="wallet" value="wallet" disabled><label for="">E-wallet <span class="unavailable">currently unavailable</span></label> <br>
             <input type="radio" name="payment" id="cod" value="cod"><label for="">Cash on Delivery</label> <br>
         </div>
-        <h1 style="text-align: right; margin-right: 40px;margin-top: 20px;">Bill ₹<span class="bill"></span></h1>
+        <h1 style="text-align: right; margin-right: 40px;margin-top: 20px; font-size: 1.5rem;">Bill ₹<span class="bill"></span></h1>
         <button class="pay">Pay</button>
     </div>
     <script>
