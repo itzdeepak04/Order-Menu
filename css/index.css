@@ -9,21 +9,18 @@ body{
             border-collapse: collapse;
         }
         .counter{
-            width:15%;
+            width:25%;
             margin: auto;
             margin-top: 20px;
             margin-right: 25%;
             border-collapse: collapse;
-        }
-        .counter td{
-            width: 30%;
         }
         .container td,th{
             height:40px;
         }
         .bill{
             height:30px;
-            width:7%;
+            width:10%;
             font-size: 20px;
             border-radius: 5px;
             background-color: green;
@@ -32,4 +29,17 @@ body{
         .bill>a{
             text-decoration: none;
             color: white;
+        }
+        @media (max-width:767px)
+        {
+            .container{
+                width:70%;
+            }
+            .counter{
+                width: 40%;
+                margin-right: 15%;
+            }
+            .bill{
+                width:20%;
+            }
         }
