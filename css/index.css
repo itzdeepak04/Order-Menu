@@ -1,0 +1,35 @@
+body{
+            text-align: center;
+        }
+        .container{
+            height:auto;
+            width:50%;
+            margin: auto;
+            text-align: center;
+            border-collapse: collapse;
+        }
+        .counter{
+            width:15%;
+            margin: auto;
+            margin-top: 20px;
+            margin-right: 25%;
+            border-collapse: collapse;
+        }
+        .counter td{
+            width: 30%;
+        }
+        .container td,th{
+            height:40px;
+        }
+        .bill{
+            height:30px;
+            width:7%;
+            font-size: 20px;
+            border-radius: 5px;
+            background-color: green;
+            margin-top: 30px;
+        }
+        .bill>a{
+            text-decoration: none;
+            color: white;
+        }

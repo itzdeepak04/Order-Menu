@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .container{
+            height:300px;
+            width:500px;
+            border: 1px solid black;
+            text-align: center;
+            align-content: center;
+            margin: auto;
+            border-radius: 20px;
+        }
+        input{
+            height:30px;
+            width:50%;
+            font-size: 20px;
+            background-color: #a6a6a8;
+            padding-left: 20px;
+        }
+        input::placeholder{
+            color: white;
+        }
+        .verify{
+            height:30px;
+            width:20%;
+            font-size: 20px;
+            background-color: #3381f6;
+            color: white;
+            cursor: pointer;
+
+        }
+        .pay{
+            height:35px;
+            width:30%;
+            margin-top: 50px;
+            font-size: 20px;
+            background-color: rgb(5, 163, 5);
+            color: white;
+            cursor: pointer;
+        }
+        input,.verify,.pay{
+            border: none;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+    <h1 style="text-align: center; margin-top: 100px;">UPI Payment</h1>
+    <div class="container">
+        <input class="input" type="text" placeholder="Enter your upi Id .....">
+        <button class="verify">verify</button> <br>
+        <button class="pay">Pay</button>
+    </div>
+    <script>
+        let container=document.querySelector(".container")
+        let input=document.querySelector(".input")
+        let verify=document.querySelector(".verify")
+        let pay=document.querySelector(".pay")
+        let back=document.querySelector(".back")
+        let toPay=new URLSearchParams(window.location.search).get("topay");
+        if(toPay !==null)
+        {
+            pay.innerText=`Pay ₹${toPay}`;
+        }
+        verify.addEventListener("click",()=>{
+            if(input.value=="")
+            {
+                alert("First ener your upi id")
+            }
+            else{
+            verify.innerText="verified"
+            verify.style.backgroundColor="rgb(5,163,5)";
+            }
+        })
+        pay.addEventListener("click",()=>{
+            if(verify.innerText=="verified")
+            {
+            alert("Payment Successfull");
+            container.style.backgroundColor="rgb(5,163,5)";
+            input.remove();
+            verify.remove();
+            pay.remove();
+            let success=document.createElement("h1");
+            success.innerText="Order Placed";
+            container.appendChild(success);
+            }
+            else{
+                alert("first verify your upi id");
+            }
+
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            box-sizing: border-box;
+        }
+        .parent{
+            height:600px;
+            width:500px;
+            border: 1px solid black;
+            margin: auto;
+            text-align: center;
+            border-radius: 20px;
+        }
+        input{
+            height:25px;
+            width:20px;
+            margin-bottom: 30px;
+            cursor: pointer;
+        }
+         .child{
+            height:400px;
+            width:400px;
+            border: 1px solid black;
+            margin: auto;
+            text-align: center;
+            text-align: left;
+            padding: 30px;
+            font-size: 30px;
+             border-radius: 20px;
+        }
+        .pay{
+            background-color:green;
+            height:30px;
+            width:20%;
+            font-size: 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .unavailable{
+            font-size: 15px;
+            color: red;
+        }
+    </style>
+</head>
+<body>
+    <div class="parent">
+        <h1>Payment Method</h1>
+        <div class="child">
+            <input type="radio" name="payment" id="upi" value="upi"><label for="">UPI</label> <br>
+            <input type="radio" name="payment" id="debit" value="debit"><label for="">Debit Card</label> <br>
+            <input type="radio" name="payment" id="credit" value="credit"><label for="">Credit Card</label> <br>
+            <input type="radio" name="payment" id="netb" value="netb"><label for="">Net Banking</label> <br>
+            <input type="radio" name="payment" id="wallet" value="wallet" disabled><label for="">E-wallet <span class="unavailable">currently unavailable</span></label> <br>
+            <input type="radio" name="payment" id="cod" value="cod"><label for="">Cash on Delivery</label> <br>
+        </div>
+        <h1 style="text-align: right; margin-right: 40px;margin-top: 20px;">Bill ₹<span class="bill"></span></h1>
+        <button class="pay">Pay</button>
+    </div>
+    <script>
+        let upi=document.getElementById("upi")
+        let debit=document.getElementById("debit")
+        let credit=document.getElementById("credit")
+        let netb=document.getElementById("netb")
+        let wallet=document.getElementById("wallet")
+        let cod=document.getElementById("cod")
+        let bill=document.querySelector(".bill");
+        let unavailable=document.querySelector(".unavailable");
+        let toPay=new URLSearchParams(window.location.search).get("topay");
+        if(toPay !==null)
+        {
+            bill.innerText=toPay;
+        }
+
+        let pay=document.querySelector(".pay");
+        pay.addEventListener("click",()=>{
+            if(upi.checked)
+            {
+                let amount=Number(bill.innerText);
+                let store=`upi.html?topay=${amount}`;
+                window.open(store,"_self")
+            }
+             else if(debit.checked)
+            {
+                let amount=Number(bill.innerText);
+                let store=`debit.html?topay=${amount}`;
+                window.open(store,"_self")
+            }
+             else if(credit.checked)
+            {
+                let amount=Number(bill.innerText);
+                let store=`credit.html?topay=${amount}`;
+                window.open(store,"_self")
+            }
+             else if(netb.checked)
+            {
+                let amount=Number(bill.innerText);
+                let store=`netb.html?topay=${amount}`;
+                window.open(store,"_self")
+            }
+            else if(cod.checked)
+            {
+                window.open("cod.html","_self")
+            }
+            else if(wallet.checked)
+            {
+                unavailable.style.display="inline";
+            }
+            else
+            {
+                unavailable.style.display="none";
+                alert("Enter any payment method")
+            }
+        })
+    </script>
+</body>
+</html>
